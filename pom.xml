@@ -7,6 +7,14 @@
     <version>1.0.0-alpha1</version>
     <url>https://github.com/opsbears/owc-dic-annotation</url>
 
+    <developers>
+        <developer>
+            <id>janoszen</id>
+            <name>Janos Pasztor</name>
+            <url>https://pasztor.at</url>
+        </developer>
+    </developers>
+
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
