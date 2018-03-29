@@ -4,7 +4,7 @@
     <artifactId>annotation</artifactId>
     <name>Opsbears Web Components Dependency Injection Container Annotation Adapter</name>
     <description>Annotation adapter for the OWC DIC</description>
-    <version>1.0.0-alpha3</version>
+    <version>1.0.0-alpha4</version>
     <url>https://github.com/opsbears/owc-dic-annotation</url>
 
     <developers>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.opsbears.webcomponents</groupId>
             <artifactId>dic</artifactId>
-            <version>1.0.0-alpha3</version>
+            <version>1.0.0-alpha4</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
@@ -57,6 +57,12 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>com.opsbears.webcomponents.dic</groupId>
+            <artifactId>jit</artifactId>
+            <version>1.0.0-alpha4</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

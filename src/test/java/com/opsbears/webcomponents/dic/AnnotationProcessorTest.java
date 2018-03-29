@@ -1,6 +1,7 @@
 package com.opsbears.webcomponents.dic;
 
 import com.opsbears.webcomponents.dic.annotation.AnnotationProcessor;
+import com.opsbears.webcomponents.dic.jit.JITInjector;
 import com.opsbears.webcomponents.dic.mock.AnnotatedFactory;
 import com.opsbears.webcomponents.dic.mock.AnnotatedInjectable;
 import com.opsbears.webcomponents.dic.mock.ConstructorlessClass;
