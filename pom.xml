@@ -4,7 +4,7 @@
     <artifactId>annotation</artifactId>
     <name>Opsbears Web Components Dependency Injection Container Annotation Adapter</name>
     <description>Annotation adapter for the OWC DIC</description>
-    <version>1.0.0-alpha2</version>
+    <version>1.0.0-alpha3</version>
     <url>https://github.com/opsbears/owc-dic-annotation</url>
 
     <developers>
@@ -46,7 +46,7 @@
         <dependency>
             <groupId>com.opsbears.webcomponents</groupId>
             <artifactId>dic</artifactId>
-            <version>1.0.0-alpha2</version>
+            <version>1.0.0-alpha3</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.findbugs</groupId>
