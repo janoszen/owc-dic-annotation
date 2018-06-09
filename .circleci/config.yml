@@ -1,0 +1,58 @@
+version: 2
+jobs:
+  build-only:
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+    steps:
+      - checkout
+      - run: sed -i -e "s/<version>master-SNAPSHOT<\/version>/<version>${CIRCLE_BRANCH}-SNAPSHOT<\/version>/" pom.xml
+      - restore_cache:
+          key: owc-dic-annotation-{{ checksum "pom.xml" }}
+      - run: mkdir -p ~/.m2 && cp settings.xml ~/.m2/
+      - run: mvn dependency:go-offline
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: owc-dic-annotation-{{ checksum "pom.xml" }}
+
+      - run: mvn package
+      - run: mkdir -p ~/artifacts && cp target/annotation-${CIRCLE_BRANCH}-SNAPSHOT*.jar ~/artifacts
+      - store_artifacts:
+          path: ~/artifacts/
+  build-and-deploy:
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+    steps:
+      - checkout
+      - run: sed -i -e "s/<version>master-SNAPSHOT<\/version>/<version>${CIRCLE_TAG}<\/version>/" pom.xml
+      - restore_cache:
+          key: owc-dic-annotation-{{ checksum "pom.xml" }}
+      - run: mkdir -p ~/.m2 && cp settings.xml ~/.m2/
+      - run: mvn dependency:go-offline
+      - save_cache:
+          paths:
+            - ~/.m2
+          key: owc-dic-annotation-{{ checksum "pom.xml" }}
+      - run: mvn package
+      - run: mkdir -p ~/artifacts && cp target/annotation-${CIRCLE_TAG}*.jar ~/artifacts
+      - store_artifacts:
+          path: ~/artifacts/
+      - run: mvn deploy
+      - run: "curl -i --user \"${BINTRAY_USER}:${BINTRAY_PASSWORD}\" -H \"Content-Type: application/json\" -X POST -d '{\"close\":0}' https://api.bintray.com/maven_central_sync/opsbears/webcomponents/annotation/versions/${CIRCLE_TAG}"
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build-only:
+          filters:
+            branches:
+              only: /.*/
+            tags:
+              ignore: /.*/
+      - build-and-deploy:
+          context: OWC
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /.*/

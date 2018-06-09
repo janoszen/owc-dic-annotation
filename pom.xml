@@ -4,7 +4,7 @@
     <artifactId>annotation</artifactId>
     <name>Opsbears Web Components Dependency Injection Container Annotation Adapter</name>
     <description>Annotation adapter for the OWC DIC</description>
-    <version>1.0.0-alpha4</version>
+    <version>master-SNAPSHOT</version>
     <url>https://github.com/opsbears/owc-dic-annotation</url>
 
     <developers>
