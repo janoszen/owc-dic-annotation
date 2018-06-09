@@ -1,5 +1,7 @@
 # OWC DIC annotation parser
 
+[![CircleCI](https://circleci.com/gh/opsbears/owc-dic-annotation.svg?style=svg)](https://circleci.com/gh/opsbears/owc-dic-annotation)
+
 This library provides automatic configuration of the [OWC dependency injector](https://github.com/opsbears/owc-dic) 
 based on annotations. It uses [ronmamo's reflections library](https://github.com/ronmamo/reflections) to do that.
 
